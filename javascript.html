@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+
+        <style>
+
+
+      input[type="button"]
+         {
+         background-color:light green;
+         color: black;
+         border: solid black 2px;
+         width:100%
+         }
+
+         input[type="text"]
+         {
+         background-color:white;
+         border: solid black 2px;
+         width:100%
+         }
+            *{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    height:33.33% ;
+    padding:30px;
+    background-color: powderblue;
+    border-bottom: 2px solid gray
+
+}
+input[type=text]:focus {
+    border: 3px solid #555;
+    width: 55%;
+}
+input[type=text],[type=number]{
+    width: 50%;
+    height: 35px;
+    text-align: center;
+}
+.container{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+input[type=button]{
+    padding: 5px;
+    font-size: 15px;
+}
+.Gallery{
+    display: flex;
+    flex-direction: row;
+}
+.gallery{
+    width:300px;
+    height: 250px;
+    border: 2px solid gray;
+    box-shadow: 0 0 10px gray;
+}
+        </style>
+        <script>
+
+            var start=1;
+            function Validate()
+            {   var email=numb.value;
+                const regex=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if(regex.test(email)==true){
+
+                    document.getElementById('numb').style.backgroundColor="green";
+                }
+                else{
+                    document.getElementById('numb').style.backgroundColor="red";
+                }
+
+            }
+            function dis(val)
+         {
+             document.getElementById("result").value+=val
+         }
+
+         //function that evaluates the digit and return result
+         function solve()
+         {
+             let x = document.getElementById("result").value
+             let y = eval(x)
+             document.getElementById("result").value = y
+         }
+
+         //function that clear the display
+         function clr()
+         {
+             document.getElementById("result").value = ""
+         }
+            function set_time(){
+                var interval=parseInt(document.getElementById('time').value);
+                setInterval(slideshow,interval);
+            }
+
+            function slideshow(){
+                var image;
+                if(start==1){
+                    image="img/1.jpg";
+                }
+
+                else if(start==2){
+                    image="img/2.jpg";
+                }
+
+                else if(start==3){
+                    image="img/3.jpg";
+                }
+
+                else if(start==4){
+                    image="img/4.jpg";
+                }
+
+                else if(start==5){
+                    image="img/5.jpg";
+                }
+
+                else if(start==6){
+                    image="img/6.jpg";
+                }
+
+                else if(start==7){
+                    image="img/7.jpg";
+                }
+
+                else if(start==8){
+                    image="img/8.jpg";
+                }
+
+                else if(start==9){
+                    image="img/9.jpg";
+                }
+
+                else if(start==10){
+                    image="img/10.jpg";
+                }
+                else{
+                    start=1;
+                    image="img/1.jpg"
+                }
+                document.getElementById('pic').src=""+image;
+                start++;
+            }
+        </script>
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="Gallery">
+                <div class="input">
+                    <h4>Enter Time Interval</h4>(in ms)<br><br>
+                    <input type="text" name="time" id="time"><br><br>
+                    <input type="button" value="Start" onclick="set_time()">
+
+                </div>
+                <div class="gallery">
+                    <img src="img/1.jpg" width="300px" height="250px" id="pic"></img>
+                </div>
+            </div>
+
+        </div>
+        <div class="container">
+
+    <table border="1">
+       <tr>
+          <td colspan="3"><input type="text" id="result"/></td>
+          <!-- clr() function will call clr to clear all value -->
+          <td><input type="button" value="c" onclick="clr()"/> </td>
+       </tr>
+       <tr>
+          <!-- create button and assign value to each button -->
+          <!-- dis("1") will call function dis to display value -->
+          <td><input type="button" value="1" onclick="dis('1')"/> </td>
+          <td><input type="button" value="2" onclick="dis('2')"/> </td>
+          <td><input type="button" value="3" onclick="dis('3')"/> </td>
+          <td><input type="button" value="/" onclick="dis('/')"/> </td>
+       </tr>
+       <tr>
+          <td><input type="button" value="4" onclick="dis('4')"/> </td>
+          <td><input type="button" value="5" onclick="dis('5')"/> </td>
+          <td><input type="button" value="6" onclick="dis('6')"/> </td>
+          <td><input type="button" value="-" onclick="dis('-')"/> </td>
+       </tr>
+       <tr>
+          <td><input type="button" value="7" onclick="dis('7')"/> </td>
+          <td><input type="button" value="8" onclick="dis('8')"/> </td>
+          <td><input type="button" value="9" onclick="dis('9')"/> </td>
+          <td><input type="button" value="+" onclick="dis('+')"/> </td>
+       </tr>
+       <tr>
+          <td><input type="button" value="." onclick="dis('.')"/> </td>
+          <td><input type="button" value="0" onclick="dis('0')"/> </td>
+          <!-- solve function call function solve to evaluate value -->
+          <td><input type="button" value="=" onclick="solve()"/> </td>
+          <td><input type="button" value="*" onclick="dis('*')"/> </td>
+       </tr>
+    </table>
+
+        </div>
+        <div class="container">
+            <h3>Enter Your email ID To Validate</h3><br>
+            <input type="text" id="numb" onblur="Validate()">
+        </div>
+
+
+    </body>
+</html>
